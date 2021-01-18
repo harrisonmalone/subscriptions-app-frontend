@@ -6,7 +6,8 @@ export function Subscriptions() {
   const [subscriptions, setSubscriptions] = useState([]);
 
   useEffect(() => {
-    fetch(process.env.REACT_APP_BACKEND_URL)
+    // http://localhost:3000/subscriptions
+    fetch(`${process.env.REACT_APP_BACKEND_URL}/subscriptions`)
       .then((res) => res.json())
       .then((body) => setSubscriptions(body));
   }, []);

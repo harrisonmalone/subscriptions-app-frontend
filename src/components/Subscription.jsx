@@ -7,10 +7,11 @@ export function Subscription(props) {
   const id = props.match.params.id;
 
   useEffect(() => {
-    fetch(`${process.env.REACT_APP_BACKEND_URL}/search?id=${id}`)
+    // localhost:3000/subscriptions/10
+    fetch(`${process.env.REACT_APP_BACKEND_URL}/subscriptions/${id}`)
       .then((res) => res.json())
-      .then((subscriptions) => {
-        setSubscription(subscriptions[0]);
+      .then((subscription) => {
+        setSubscription(subscription);
       });
   }, [id]);
 
