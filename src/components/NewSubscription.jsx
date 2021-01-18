@@ -15,7 +15,7 @@ export function NewSubscription({ history }) {
   async function onFormSubmit(e) {
     try {
       e.preventDefault();
-      await fetch("https://sheetdb.io/api/v1/wo7lxtef4quqc", {
+      await fetch(process.env.REACT_APP_BACKEND_URL, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

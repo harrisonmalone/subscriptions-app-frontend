@@ -6,7 +6,7 @@ export function Subscriptions() {
   const [subscriptions, setSubscriptions] = useState([]);
 
   useEffect(() => {
-    fetch("https://sheetdb.io/api/v1/wo7lxtef4quqc")
+    fetch(process.env.REACT_APP_BACKEND_URL)
       .then((res) => res.json())
       .then((body) => setSubscriptions(body));
   }, []);

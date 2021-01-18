@@ -7,7 +7,7 @@ export function Subscription(props) {
   const id = props.match.params.id;
 
   useEffect(() => {
-    fetch(`https://sheetdb.io/api/v1/wo7lxtef4quqc/search?id=${id}`)
+    fetch(`${process.env.REACT_APP_BACKEND_URL}/search?id=${id}`)
       .then((res) => res.json())
       .then((subscriptions) => {
         setSubscription(subscriptions[0]);
