@@ -18,6 +18,12 @@
 - ERD, models
 - Subscriptions: id, name (netflix, disney plus), price_per_month, billing_date
 
+## Client side routes
+
+1. home route for displaying subscriptions "/subscriptions"
+2. individual subscription route "/subscriptions/:id"
+3. create subscription page "/subscriptions/new"
+
 ## Wireframes 
 
 ## Architecture diagram
