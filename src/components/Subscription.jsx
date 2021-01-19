@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Card } from "../styles/Subscriptions";
-import { Link } from "react-router-dom";
+import { CardLink } from '../styles/Subscriptions'
 
 export function Subscription(props) {
   const [subscription, setSubscription] = useState(null);
@@ -18,14 +17,14 @@ export function Subscription(props) {
   return (
     subscription && (
       <>
-        <Card>
+        <div>
           <h2>Name: {subscription.name}</h2>
-          <p>Price: {subscription.price_per_month}</p>
+          <p>Price: ${subscription.price_per_month}</p>
           <p>Billing period: {subscription.billing_period}</p>
-        </Card>
-        <Link to="/" onClick={props.history.goBack}>
+        </div>
+        <CardLink to="/" onClick={props.history.goBack}>
           Back
-        </Link>
+        </CardLink>
       </>
     )
   );
