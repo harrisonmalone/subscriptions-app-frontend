@@ -1,5 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { OuterCard, InnerCard, CardWrapper, CardLink } from "../styles/Subscriptions";
+import {
+  OuterCard,
+  InnerCard,
+  CardWrapper,
+  CardLink,
+} from "../styles/Subscriptions";
 
 export function Subscriptions() {
   const [subscriptions, setSubscriptions] = useState([]);
@@ -46,14 +51,18 @@ export function Subscriptions() {
                 <h2>Name: {subscription.name}</h2>
                 <p>Price: ${subscription.price_per_month}</p>
                 <p>Billing period: {subscription.billing_period}</p>
-                <CardLink to={`/subscriptions/${subscription.id}`}>Show</CardLink>
+                <CardLink to={`/subscriptions/${subscription.id}`}>
+                  Show
+                </CardLink>
                 <CardLink
                   onClick={(e) => onDeleteLinkClick(e, subscription)}
                   to={`/subscriptions/${subscription.id}`}
                 >
                   Delete
                 </CardLink>
-                <CardLink to={`/subscriptions/${subscription.id}/edit`}>Edit</CardLink>
+                <CardLink to={`/subscriptions/${subscription.id}/edit`}>
+                  Edit
+                </CardLink>
               </InnerCard>
             </OuterCard>
           );
