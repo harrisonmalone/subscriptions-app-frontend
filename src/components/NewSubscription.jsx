@@ -15,20 +15,17 @@ export function NewSubscription({ history }) {
   async function onFormSubmit(e) {
     try {
       e.preventDefault();
-      await fetch(process.env.REACT_APP_BACKEND_URL, {
+      await fetch(`${process.env.REACT_APP_BACKEND_URL}/subscriptions`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          data: [
-            {
-              id: "INCREMENT",
-              name: name,
-              price_per_month: price,
-              billing_period: billingPeriod,
-            },
-          ],
+          subscription: {
+            name: name,
+            price_per_month: price,
+            billing_period: billingPeriod,
+          },
         }),
       });
       // redirect_to
