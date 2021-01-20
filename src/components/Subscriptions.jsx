@@ -52,12 +52,9 @@ export function Subscriptions() {
           return (
             <OuterCard key={subscription.id}>
               <InnerCard>
-                <h2>Name: {subscription.name}</h2>
-                <p>Price: ${subscription.price_per_month}</p>
-                <p>Billing period: {subscription.billing_period}</p>
-                <CardLink to={`/subscriptions/${subscription.id}`}>
-                  Show
-                </CardLink>
+                <h2>{subscription.name}</h2>
+                <p>💵 ${subscription.price_per_month}</p>
+                <p>📆 {subscription.billing_period}</p>
                 <CardLink
                   onClick={(e) => onDeleteLinkClick(e, subscription)}
                   to={`/subscriptions/${subscription.id}`}

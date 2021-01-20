@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { LoggedOutNavbar } from './LoggedOutNavbar'
+import { LoggedOutNavbar } from "./LoggedOutNavbar";
+import { Form } from "../styles/Form";
 
 export function SignUp({ history }) {
   const [email, setEmail] = useState("");
@@ -22,13 +23,16 @@ export function SignUp({ history }) {
       if (response.status >= 400) {
         throw new Error("incorrect credentials");
       } else {
-        const response = await fetch( `${process.env.REACT_APP_BACKEND_URL}/login`, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ auth: { email, password } }),
-        });
+        const response = await fetch(
+          `${process.env.REACT_APP_BACKEND_URL}/login`,
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ auth: { email, password } }),
+          }
+        );
         const { jwt } = await response.json();
         localStorage.setItem("token", jwt);
         history.push("/subscriptions");
@@ -42,25 +46,29 @@ export function SignUp({ history }) {
     <>
       <LoggedOutNavbar />
       <h1>Sign Up</h1>
-      <form onSubmit={onFormSubmit}>
-        <label htmlFor="email">Email</label>
-        <input
-          type="email"
-          name="email"
-          id="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
-        <label htmlFor="password">Password</label>
-        <input
-          type="password"
-          name="password"
-          id="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-        <input type="submit" value="Submit" />
-      </form>
+      <Form onSubmit={onFormSubmit}>
+        <div className="form-group">
+          <label htmlFor="email">Email</label>
+          <input
+            type="email"
+            name="email"
+            id="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+        </div>
+        <div className="form-group">
+          <label htmlFor="password">Password</label>
+          <input
+            type="password"
+            name="password"
+            id="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+        </div>
+        <input id="submit" type="submit" value="Submit" />
+      </Form>
     </>
   );
 }

@@ -1,11 +1,12 @@
 import React from "react";
-import { Nav, RouterLink } from "../styles/App";
+import { Nav, NavLink, Logo } from "../styles/App";
 
 export function LoggedOutNavbar() {
   return (
     <Nav>
-      <RouterLink to="/login">Login</RouterLink>
-      <RouterLink to="/sign-up">Sign Up</RouterLink>
+      <NavLink to="/login"><Logo>💵</Logo></NavLink>
+      <NavLink to="/login">Login</NavLink>
+      <NavLink to="/sign-up">Sign Up</NavLink>
     </Nav>
   );
 }

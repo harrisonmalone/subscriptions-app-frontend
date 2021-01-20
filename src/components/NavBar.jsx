@@ -1,5 +1,5 @@
 import React from "react";
-import { Nav, RouterLink } from "../styles/App";
+import { Nav, NavLink, Logo } from "../styles/App";
 import { useHistory } from 'react-router-dom'
 
 export function NavBar() {
@@ -13,9 +13,9 @@ export function NavBar() {
 
   return (
     <Nav>
-      <RouterLink to="/subscriptions">Home</RouterLink>
-      <RouterLink to="/subscriptions/new">New Subscription</RouterLink>
-      <RouterLink to="/" onClick={logout}>Logout</RouterLink>
+      <NavLink to="/subscriptions"><Logo>💵</Logo></NavLink>
+      <NavLink to="/subscriptions/new">New Subscription</NavLink>
+      <NavLink to="/" onClick={logout}>Logout</NavLink>
     </Nav>
   );
 }

@@ -8,17 +8,18 @@ export const CardWrapper = styled.div`
 `;
 
 export const OuterCard = styled.div`
-  width: 50%;
+  width: 100%;
 `;
 
 export const InnerCard = styled.div`
-  margin: 10px;
+  margin: 10px 0px;
   border: 1px solid black;
   padding: 10px;
+  border-radius: 3px;
 `;
 
 export const CardLink = styled(Link)`
   margin-right: 10px;
   text-decoration: none;
-  color: blue;
+  color: crimson;
 `;
