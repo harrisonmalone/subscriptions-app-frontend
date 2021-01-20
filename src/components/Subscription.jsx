@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { CardLink } from '../styles/Subscriptions'
+import { CardLink } from "../styles/Subscriptions";
 
 export function Subscription(props) {
   const [subscription, setSubscription] = useState(null);
@@ -7,7 +7,11 @@ export function Subscription(props) {
 
   useEffect(() => {
     // localhost:3000/subscriptions/10
-    fetch(`${process.env.REACT_APP_BACKEND_URL}/subscriptions/${id}`)
+    fetch(`${process.env.REACT_APP_BACKEND_URL}/subscriptions/${id}`, {
+      headers: {
+        'Authorization': `Bearer ${localStorage.getItem('token')}`
+      }
+    })
       .then((res) => res.json())
       .then((subscription) => {
         setSubscription(subscription);

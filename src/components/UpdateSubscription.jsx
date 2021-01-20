@@ -6,16 +6,22 @@ import {
   SubscriptionInputSubmit,
   SubscriptionSelect,
 } from "../styles/NewSubscription";
+import { useParams, useHistory } from "react-router-dom";
 
-export function UpdateSubscription({ history, match }) {
+export function UpdateSubscription() {
   const [name, setName] = useState("");
   const [price, setPrice] = useState("");
   const [billingPeriod, setBillingPeriod] = useState("weekly");
-  const id = match.params.id;
+  const { id } = useParams();
+  const history = useHistory();
 
   useEffect(() => {
     // localhost:3000/subscriptions/10
-    fetch(`${process.env.REACT_APP_BACKEND_URL}/subscriptions/${id}`)
+    fetch(`${process.env.REACT_APP_BACKEND_URL}/subscriptions/${id}`, {
+      headers: {
+        'Authorization': `Bearer ${localStorage.getItem('token')}`
+      }
+    })
       .then((res) => res.json())
       .then((subscription) => {
         setName(subscription.name);
@@ -31,6 +37,7 @@ export function UpdateSubscription({ history, match }) {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
+          'Authorization': `Bearer ${localStorage.getItem('token')}`
         },
         body: JSON.stringify({
           subscription: {

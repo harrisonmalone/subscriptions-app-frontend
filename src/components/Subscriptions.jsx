@@ -10,8 +10,11 @@ export function Subscriptions() {
   const [subscriptions, setSubscriptions] = useState([]);
 
   function fetchSubscriptions() {
-    // http://localhost:3000/subscriptions
-    fetch(`${process.env.REACT_APP_BACKEND_URL}/subscriptions`)
+    fetch(`${process.env.REACT_APP_BACKEND_URL}/subscriptions`, {
+      headers: {
+        'Authorization': `Bearer ${localStorage.getItem('token')}`
+      }
+    })
       .then((res) => res.json())
       .then((body) => setSubscriptions(body));
   }
@@ -30,6 +33,7 @@ export function Subscriptions() {
             method: "DELETE",
             headers: {
               "Content-Type": "application/json",
+              'Authorization': `Bearer ${localStorage.getItem('token')}`
             },
           }
         );
